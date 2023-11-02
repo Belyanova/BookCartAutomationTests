@@ -1,26 +1,33 @@
 package steps;
 
-import pages.GeneralPage;
 import pages.LoginPage;
 
 public class LoginSteps {
-    private LoginPage loginPage = new LoginPage();
+    private final LoginPage loginPage = new LoginPage();
 
     public LoginSteps verifyLoginPage(){
         loginPage.assertThatLoginTitleExpected();
+        loginPage.verifyThatUsernameAndPasswordErrorDisplayed();
         return this;
     }
 
-    public GeneralSteps fillUsernameAndPasswordInputs(){
-        loginPage.fillUsernameInput();
-        loginPage.fillPasswordInput();
+    public LoginSteps fillUsernameAndPasswordInputs(String username, String password){
+        loginPage.fillUsernameInput(username);
+        loginPage.fillPasswordInput(password);
+        return this;
+    }
+
+    public LoginSteps clickOnLoginButton(){
         loginPage.clickOnLoginButton();
-        return new GeneralSteps();
+        return this;
     }
 
-    public LoginSteps verifyErrorsAboutRequired(){
-        loginPage.assertThatUsernameErrorExpected();
-        loginPage.assertThatPasswordErrorExpected();
-        return this;
+    public void verifyErrorOnLoginPage(){
+        loginPage.verifyThatIncorrectUsernameOrPasswordErrorDisplayed();
+    }
+
+    public GeneralSteps verifyThatLoginPageClosed(){
+        loginPage.verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed();
+        return new GeneralSteps();
     }
 }

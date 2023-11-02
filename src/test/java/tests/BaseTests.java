@@ -1,16 +1,14 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import steps.GeneralSteps;
 import utils.DriverFactory;
 import utils.PropertyReader;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseTest {
+public abstract class BaseTests {
     private static WebDriver driver;
     GeneralSteps generalSteps;
     public static WebDriver getDriver(){
@@ -29,9 +27,4 @@ public abstract class BaseTest {
     public void tearDown() {
         driver.quit();
     }
-
-    //@AfterMethod
-    //public void goGeneralPage() {
-        //driver.get(PropertyReader.getURL());
-    //}
 }

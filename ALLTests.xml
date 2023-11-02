@@ -1,0 +1,9 @@
+<suite name="ALLTestSuite">
+    <test name="LoginTests">
+        <parameter name="correctUsername" value="testname-iri" />
+        <parameter name="correctPassword" value="123Test123!" />
+        <classes>
+            <class name="tests.LoginTests" />
+        </classes>
+    </test>
+</suite>

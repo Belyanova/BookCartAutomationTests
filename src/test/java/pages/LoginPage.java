@@ -10,38 +10,43 @@ public class LoginPage extends BasePage{
     @FindBy(className = "docs-example-viewer-title-spacer")
     private WebElement loginTitle;
 
-    @FindBy(id = "mat-input-0")
+    @FindBy(xpath = "//div/input[@data-placeholder='Username']")
     private WebElement usernameInput;
 
-    @FindBy(id = "mat-input-1")
+    @FindBy(xpath = "//div/input[@data-placeholder='Password']")
     private WebElement passwordInput;
 
     @FindBy(xpath = "//mat-card-actions/button/span")
     private WebElement loginButton;
 
-    @FindBy(id = "mat-error-0")
+    @FindBy(xpath = "//mat-error[contains(.,'Username is required')]")
     private WebElement usernameError;
 
-    @FindBy(id = "mat-error-1")
+    @FindBy(xpath = "//mat-error[contains(.,'Password is required')]")
     private WebElement passwordError;
+
+    @FindBy(xpath = "//mat-error[contains(.,'Username or Password is incorrect.')]")
+    private WebElement incorrectUsernameOrPasswordError;
 
     public void assertThatLoginTitleExpected(){
         wait.until(ExpectedConditions.visibilityOf(loginTitle));
         assertThat(loginTitle.getText())
-                .as(" Wrong text has been displayed!")
-                .contains("Login");
+                .as("Wrong title on login page has been displayed!")
+                .contains("Login")
+                .contains("New User?")
+                .contains("Register");
     }
 
-    public void fillUsernameInput(){
+    public void fillUsernameInput(String username){
         wait.until(ExpectedConditions.visibilityOf(usernameInput));
         usernameInput.click();
-        usernameInput.sendKeys("testname-iri");
+        usernameInput.sendKeys(username);
     }
 
-    public void fillPasswordInput(){
+    public void fillPasswordInput(String password){
         wait.until(ExpectedConditions.visibilityOf(passwordInput));
         passwordInput.click();
-        passwordInput.sendKeys("123Test123!");
+        passwordInput.sendKeys(password);
     }
 
     public void clickOnLoginButton(){
@@ -49,21 +54,19 @@ public class LoginPage extends BasePage{
         loginButton.click();
     }
 
-    public void assertThatUsernameErrorExpected(){
+    public void verifyThatUsernameAndPasswordErrorDisplayed(){
         usernameInput.click();
         passwordInput.click();
         wait.until(ExpectedConditions.visibilityOf(usernameError));
-        assertThat(usernameError.getText())
-                .as(" Wrong text has been displayed!")
-                .contains("Username is required");
-    }
-
-    public void assertThatPasswordErrorExpected(){
-        passwordInput.click();
         usernameInput.click();
         wait.until(ExpectedConditions.visibilityOf(passwordError));
-        assertThat(passwordError.getText())
-                .as(" Wrong text has been displayed!")
-                .contains("Password is required");
+    }
+
+    public void verifyThatIncorrectUsernameOrPasswordErrorDisplayed() {
+        wait.until(ExpectedConditions.visibilityOf(incorrectUsernameOrPasswordError));
+    }
+
+    public void verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed() {
+        wait.until(ExpectedConditions.invisibilityOf(incorrectUsernameOrPasswordError));
     }
 }

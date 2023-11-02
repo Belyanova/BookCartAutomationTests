@@ -3,9 +3,9 @@ package steps;
 import pages.GeneralPage;
 
 public class GeneralSteps {
-    private GeneralPage generalPage = new GeneralPage();
+    private final GeneralPage generalPage = new GeneralPage();
 
-    public GeneralSteps verifyGeneralPage(){
+    public GeneralSteps verifyGeneralPageNoLoginAccount(){
         generalPage.assertThatBookCartButtonExpected();
         generalPage.assertThatLoginButtonExpected();
         return this;
@@ -17,8 +17,13 @@ public class GeneralSteps {
         return new LoginSteps();
     }
 
-    public GeneralSteps verifyUsername(){
-        generalPage.verifyUsername();
+    public GeneralSteps verifyThatUsernameExpected(String username){
+        generalPage.verifyThatUsernameExpected(username);
         return this;
+    }
+
+    public void logoutOfAccount(){
+        generalPage.clickOnLogoutButton();
+        generalPage.assertThatLoginButtonExpected();
     }
 }
