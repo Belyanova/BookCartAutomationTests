@@ -1,26 +1,39 @@
 package steps;
 
-import pages.GeneralPage;
+import io.qameta.allure.Step;
 import pages.LoginPage;
 
 public class LoginSteps {
-    private LoginPage loginPage = new LoginPage();
+    private final LoginPage loginPage = new LoginPage();
 
+    @Step("Verify Login Page")
     public LoginSteps verifyLoginPage(){
         loginPage.assertThatLoginTitleExpected();
+        loginPage.verifyThatUsernameAndPasswordErrorDisplayed();
         return this;
     }
 
-    public GeneralSteps fillUsernameAndPasswordInputs(){
-        loginPage.fillUsernameInput();
-        loginPage.fillPasswordInput();
+    @Step("Fill Username {0} And Password {1} Inputs")
+    public LoginSteps fillUsernameAndPasswordInputs(String username, String password){
+        loginPage.fillUsernameInput(username);
+        loginPage.fillPasswordInput(password);
+        return this;
+    }
+
+    @Step("Click On Login Button")
+    public LoginSteps clickOnLoginButton(){
         loginPage.clickOnLoginButton();
-        return new GeneralSteps();
+        return this;
     }
 
-    public LoginSteps verifyErrorsAboutRequired(){
-        loginPage.assertThatUsernameErrorExpected();
-        loginPage.assertThatPasswordErrorExpected();
-        return this;
+    @Step("Verify Error On Login Page")
+    public void verifyErrorOnLoginPage(){
+        loginPage.verifyThatIncorrectUsernameOrPasswordErrorDisplayed();
+    }
+
+    @Step("Verify That Login Page Closed")
+    public GeneralSteps verifyThatLoginPageClosed(){
+        loginPage.verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed();
+        return new GeneralSteps();
     }
 }

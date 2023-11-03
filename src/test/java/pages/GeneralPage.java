@@ -13,20 +13,26 @@ public class GeneralPage extends BasePage{
     @FindBy(xpath = "//button[2]/span")
     private WebElement loginButton;
 
-    @FindBy(className = "")
-    private WebElement username;
+    @FindBy(xpath = "//span[contains(.,'account_circle')]")
+    private WebElement usernameButton;
+
+    @FindBy(xpath = "//button[contains(.,'Logout')]")
+    private WebElement logoutButton;
+
+    @FindBy(className = "cdk-overlay-container")
+    private WebElement dropdown;
 
     public void assertThatBookCartButtonExpected(){
         wait.until(ExpectedConditions.visibilityOf(bookCartButton));
         assertThat(bookCartButton.getText())
-                .as(" Wrong text has been displayed!")
+                .as("Wrong Book Cart button has been displayed!")
                 .contains("Book Cart");
     }
 
     public void assertThatLoginButtonExpected(){
         wait.until(ExpectedConditions.visibilityOf(loginButton));
         assertThat(loginButton.getText())
-                .as(" Wrong text has been displayed!")
+                .as("Wrong Login button has been displayed!")
                 .contains("Login");
     }
 
@@ -35,10 +41,17 @@ public class GeneralPage extends BasePage{
         loginButton.click();
     }
 
-    public void verifyUsername(){
-        wait.until(ExpectedConditions.visibilityOf(username));
-        assertThat(username.getText())
-                .as(" Wrong text has been displayed!")
-                .contains("testname-iri");
+    public void verifyThatUsernameExpected(String username){
+        wait.until(ExpectedConditions.visibilityOf(usernameButton));
+        assertThat(usernameButton.getText())
+                .as("Wrong username has been displayed!")
+                .contains(username);
+    }
+
+    public void clickOnLogoutButton(){
+        wait.until(ExpectedConditions.visibilityOf(usernameButton));
+        usernameButton.click();
+        wait.until(ExpectedConditions.visibilityOf(logoutButton));
+        logoutButton.click();
     }
 }
