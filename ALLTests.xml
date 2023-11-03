@@ -2,6 +2,9 @@
     <test name="LoginTests">
         <parameter name="correctUsername" value="testname-iri" />
         <parameter name="correctPassword" value="123Test123!" />
+        <listeners>
+            <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+        </listeners>
         <classes>
             <class name="tests.LoginTests" />
         </classes>

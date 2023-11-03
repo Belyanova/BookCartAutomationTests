@@ -11,9 +11,9 @@ import java.time.Duration;
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
+
     public BasePage(){
         this.driver = BaseTests.getDriver();
-        //ленивая инициализация (элементы инициализируются тогда, когда мы к ним обращаемся
         PageFactory.initElements(driver,this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
