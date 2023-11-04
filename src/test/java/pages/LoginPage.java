@@ -16,7 +16,7 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//div/input[@data-placeholder='Password']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//mat-card-actions/button/span")
+    @FindBy(xpath = "//mat-card-actions/button[contains(.,'Login')]")
     private WebElement loginButton;
 
     @FindBy(xpath = "//mat-error[contains(.,'Username is required')]")
@@ -28,6 +28,8 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//mat-error[contains(.,'Username or Password is incorrect.')]")
     private WebElement incorrectUsernameOrPasswordError;
 
+    @FindBy(xpath = "//button[contains(.,'Register')]")
+    private WebElement registerButton;
     public void assertThatLoginTitleExpected(){
         wait.until(ExpectedConditions.visibilityOf(loginTitle));
         assertThat(loginTitle.getText())
@@ -38,15 +40,11 @@ public class LoginPage extends BasePage{
     }
 
     public void fillUsernameInput(String username){
-        wait.until(ExpectedConditions.visibilityOf(usernameInput));
-        usernameInput.click();
-        usernameInput.sendKeys(username);
+        fillInput(username,usernameInput);
     }
 
     public void fillPasswordInput(String password){
-        wait.until(ExpectedConditions.visibilityOf(passwordInput));
-        passwordInput.click();
-        passwordInput.sendKeys(password);
+        fillInput(password, passwordInput);
     }
 
     public void clickOnLoginButton(){
@@ -68,5 +66,10 @@ public class LoginPage extends BasePage{
 
     public void verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed() {
         wait.until(ExpectedConditions.invisibilityOf(incorrectUsernameOrPasswordError));
+    }
+
+    public void clickOnRegisterButton(){
+        wait.until(ExpectedConditions.visibilityOf(registerButton));
+        registerButton.click();
     }
 }

@@ -2,6 +2,7 @@ package steps;
 
 import io.qameta.allure.Step;
 import pages.LoginPage;
+import pages.RegistrationPage;
 
 public class LoginSteps {
     private final LoginPage loginPage = new LoginPage();
@@ -35,5 +36,10 @@ public class LoginSteps {
     public GeneralSteps verifyThatLoginPageClosed(){
         loginPage.verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed();
         return new GeneralSteps();
+    }
+
+    public RegistrationSteps clickOnRegistrationButton(){
+        loginPage.clickOnRegisterButton();
+        return new RegistrationSteps();
     }
 }

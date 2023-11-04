@@ -2,7 +2,9 @@ package pages;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import tests.BaseTests;
 
@@ -21,5 +23,11 @@ public class BasePage {
     public static String generateRandomEnglishString(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         return RandomStringUtils.random(length, characters);
+    }
+
+    public void fillInput(String string, WebElement webElement){
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+        webElement.click();
+        webElement.sendKeys(string);
     }
 }
