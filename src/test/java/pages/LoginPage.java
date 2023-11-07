@@ -16,7 +16,7 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//div/input[@data-placeholder='Password']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = "//mat-card-actions/button/span")
+    @FindBy(xpath = "//mat-card-actions/button[contains(.,'Login')]")
     private WebElement loginButton;
 
     @FindBy(xpath = "//mat-error[contains(.,'Username is required')]")
@@ -28,6 +28,9 @@ public class LoginPage extends BasePage{
     @FindBy(xpath = "//mat-error[contains(.,'Username or Password is incorrect.')]")
     private WebElement incorrectUsernameOrPasswordError;
 
+    @FindBy(xpath = "//button[contains(.,'Register')]")
+    private WebElement registerButton;
+
     public void assertThatLoginTitleExpected(){
         wait.until(ExpectedConditions.visibilityOf(loginTitle));
         assertThat(loginTitle.getText())
@@ -38,20 +41,21 @@ public class LoginPage extends BasePage{
     }
 
     public void fillUsernameInput(String username){
-        wait.until(ExpectedConditions.visibilityOf(usernameInput));
-        usernameInput.click();
-        usernameInput.sendKeys(username);
+        fillInput(username,usernameInput);
     }
 
     public void fillPasswordInput(String password){
-        wait.until(ExpectedConditions.visibilityOf(passwordInput));
-        passwordInput.click();
-        passwordInput.sendKeys(password);
+        fillInput(password,passwordInput);
     }
 
     public void clickOnLoginButton(){
         wait.until(ExpectedConditions.visibilityOf(loginButton));
         loginButton.click();
+    }
+
+    public void verifyLoginButton(){
+        wait.until(ExpectedConditions.visibilityOf(loginButton));
+        assertThatMessageExpected(loginButton.getText(), "Login", loginButton);
     }
 
     public void verifyThatUsernameAndPasswordErrorDisplayed(){
@@ -62,11 +66,33 @@ public class LoginPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(passwordError));
     }
 
+    public void verifyThatUsernameAndPasswordError(){
+        wait.until(ExpectedConditions.visibilityOf(usernameError));
+        assertThatMessageExpected(usernameError.getText(), "Username is required", usernameError);
+        wait.until(ExpectedConditions.visibilityOf(passwordError));
+        assertThatMessageExpected(passwordError.getText(), "Password is required", passwordError);
+    }
+
     public void verifyThatIncorrectUsernameOrPasswordErrorDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(incorrectUsernameOrPasswordError));
+        assertThatMessageExpected(incorrectUsernameOrPasswordError.getText(),"Username or Password is incorrect.",incorrectUsernameOrPasswordError);
+    }
+
+    public void verifyThatIncorrectUsernameOrPasswordError() {
+        assertThatMessageExpected(incorrectUsernameOrPasswordError.getText(),"Username or Password is incorrect.",incorrectUsernameOrPasswordError);
     }
 
     public void verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed() {
         wait.until(ExpectedConditions.invisibilityOf(incorrectUsernameOrPasswordError));
+    }
+
+    public void clickOnRegisterButton(){
+        wait.until(ExpectedConditions.visibilityOf(registerButton));
+        registerButton.click();
+    }
+
+    public void verifyRegisterButton(){
+        wait.until(ExpectedConditions.visibilityOf(registerButton));
+        assertThatMessageExpected(registerButton.getText(), "Register", registerButton);
     }
 }

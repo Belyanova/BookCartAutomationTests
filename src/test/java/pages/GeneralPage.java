@@ -50,8 +50,20 @@ public class GeneralPage extends BasePage{
 
     public void clickOnLogoutButton(){
         wait.until(ExpectedConditions.visibilityOf(usernameButton));
-        usernameButton.click();
+        actions.clickAndHold(usernameButton).perform();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        actions.release(usernameButton).perform();
         wait.until(ExpectedConditions.visibilityOf(logoutButton));
-        logoutButton.click();
+        actions.clickAndHold(logoutButton).perform();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        actions.release(logoutButton).perform();
     }
 }

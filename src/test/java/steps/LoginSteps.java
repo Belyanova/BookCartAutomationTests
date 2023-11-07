@@ -10,6 +10,7 @@ public class LoginSteps {
     public LoginSteps verifyLoginPage(){
         loginPage.assertThatLoginTitleExpected();
         loginPage.verifyThatUsernameAndPasswordErrorDisplayed();
+        loginPage.verifyThatUsernameAndPasswordError();
         return this;
     }
 
@@ -22,6 +23,7 @@ public class LoginSteps {
 
     @Step("Click On Login Button")
     public LoginSteps clickOnLoginButton(){
+        loginPage.verifyLoginButton();
         loginPage.clickOnLoginButton();
         return this;
     }
@@ -29,11 +31,19 @@ public class LoginSteps {
     @Step("Verify Error On Login Page")
     public void verifyErrorOnLoginPage(){
         loginPage.verifyThatIncorrectUsernameOrPasswordErrorDisplayed();
+        loginPage.verifyThatIncorrectUsernameOrPasswordError();
     }
 
     @Step("Verify That Login Page Closed")
     public GeneralSteps verifyThatLoginPageClosed(){
         loginPage.verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed();
         return new GeneralSteps();
+    }
+
+    @Step("Click On Registration Button")
+    public RegistrationSteps clickOnRegistrationButton(){
+        loginPage.clickOnRegisterButton();
+        loginPage.verifyRegisterButton();
+        return new RegistrationSteps();
     }
 }

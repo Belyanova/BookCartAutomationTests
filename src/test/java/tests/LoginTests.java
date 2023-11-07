@@ -9,7 +9,7 @@ import static pages.BasePage.generateRandomEnglishString;
 public class LoginTests extends BaseTests {
     @Parameters({"correctUsername", "correctPassword"})
     @Test(description = "Correct Username And Correct Password Test")
-    public void correctUsernameAndCorrectPasswordTest(String correctUsername, String correctPassword) {
+    public void correctUsernameAndCorrectPasswordLoginTest(String correctUsername, String correctPassword) {
         generalSteps.verifyGeneralPageNoLoginAccount()
                 .goToLoginPage()
                 .verifyLoginPage()
@@ -22,7 +22,7 @@ public class LoginTests extends BaseTests {
 
     @Parameters("correctUsername")
     @Test(description = "Correct Username And Incorrect Password Test")
-    public void correctUsernameAndIncorrectPasswordTest(String correctUsername) {
+    public void correctUsernameAndIncorrectPasswordLoginTest(String correctUsername) {
         String randomPassword = generateRandomEnglishString(10);
         generalSteps.verifyGeneralPageNoLoginAccount()
                 .goToLoginPage()
@@ -33,7 +33,7 @@ public class LoginTests extends BaseTests {
     }
 
     @Test(description = "Incorrect Username And Incorrect Password Test")
-    public void incorrectUsernameAndIncorrectPasswordTest(){
+    public void incorrectUsernameAndIncorrectPasswordLoginTest(){
         String randomPassword = generateRandomEnglishString(10);
         String randomUsername = generateRandomEnglishString(10);
         generalSteps.verifyGeneralPageNoLoginAccount()
