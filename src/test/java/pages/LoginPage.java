@@ -30,6 +30,7 @@ public class LoginPage extends BasePage{
 
     @FindBy(xpath = "//button[contains(.,'Register')]")
     private WebElement registerButton;
+
     public void assertThatLoginTitleExpected(){
         wait.until(ExpectedConditions.visibilityOf(loginTitle));
         assertThat(loginTitle.getText())
@@ -44,12 +45,17 @@ public class LoginPage extends BasePage{
     }
 
     public void fillPasswordInput(String password){
-        fillInput(password, passwordInput);
+        fillInput(password,passwordInput);
     }
 
     public void clickOnLoginButton(){
         wait.until(ExpectedConditions.visibilityOf(loginButton));
         loginButton.click();
+    }
+
+    public void verifyLoginButton(){
+        wait.until(ExpectedConditions.visibilityOf(loginButton));
+        assertThatMessageExpected(loginButton.getText(), "Login", loginButton);
     }
 
     public void verifyThatUsernameAndPasswordErrorDisplayed(){
@@ -60,8 +66,20 @@ public class LoginPage extends BasePage{
         wait.until(ExpectedConditions.visibilityOf(passwordError));
     }
 
+    public void verifyThatUsernameAndPasswordError(){
+        wait.until(ExpectedConditions.visibilityOf(usernameError));
+        assertThatMessageExpected(usernameError.getText(), "Username is required", usernameError);
+        wait.until(ExpectedConditions.visibilityOf(passwordError));
+        assertThatMessageExpected(passwordError.getText(), "Password is required", passwordError);
+    }
+
     public void verifyThatIncorrectUsernameOrPasswordErrorDisplayed() {
         wait.until(ExpectedConditions.visibilityOf(incorrectUsernameOrPasswordError));
+        assertThatMessageExpected(incorrectUsernameOrPasswordError.getText(),"Username or Password is incorrect.",incorrectUsernameOrPasswordError);
+    }
+
+    public void verifyThatIncorrectUsernameOrPasswordError() {
+        assertThatMessageExpected(incorrectUsernameOrPasswordError.getText(),"Username or Password is incorrect.",incorrectUsernameOrPasswordError);
     }
 
     public void verifyThatIncorrectUsernameOrPasswordErrorIsNotDisplayed() {
@@ -71,5 +89,10 @@ public class LoginPage extends BasePage{
     public void clickOnRegisterButton(){
         wait.until(ExpectedConditions.visibilityOf(registerButton));
         registerButton.click();
+    }
+
+    public void verifyRegisterButton(){
+        wait.until(ExpectedConditions.visibilityOf(registerButton));
+        assertThatMessageExpected(registerButton.getText(), "Register", registerButton);
     }
 }

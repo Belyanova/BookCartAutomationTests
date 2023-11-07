@@ -24,9 +24,6 @@ public class DriverFactory {
                 System.setProperty("webdriver.firefox.driver", file.getAbsolutePath());
                 driver = new FirefoxDriver();
                 break;
-            case SAFARI:
-                driver = new SafariDriver();
-                break;
         }
         driver.manage().window().maximize();
         return driver;

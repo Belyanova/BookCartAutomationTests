@@ -27,7 +27,7 @@ public abstract class BaseTests {
     @BeforeClass
     public void setUp() {
         driver = DriverFactory.getDriver(PropertyReader.getBrowser());
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(PropertyReader.getURL());
         generalSteps = new GeneralSteps();
     }
