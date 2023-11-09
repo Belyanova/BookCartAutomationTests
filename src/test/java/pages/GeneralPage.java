@@ -102,12 +102,7 @@ public class GeneralPage extends BasePage{
         return webElements.get(randomIndex);
     }
 
-    public String getSearchFieldValue(){
-        return searchField.getAttribute("value");
-    }
-
-    public boolean checkSearchResults(){
-        String title = getSearchFieldValue();
+    public boolean checkSearchResults(String title){
         WebElement webElement = findBookElement();
         if (webElement.getText()!= title){
             return false;

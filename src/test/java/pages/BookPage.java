@@ -32,7 +32,6 @@ public class BookPage extends BasePage{
     public void verifyAuthor(String author) {
         String findAuthor = findElementAuthor();
         assertThatMessageExpected(findAuthor, author,bookDetailsAuthor.get(0));
-        System.out.println(findAuthor);
     }
 
     public void clickOnSearchField(){

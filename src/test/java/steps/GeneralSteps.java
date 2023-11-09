@@ -49,8 +49,8 @@ public class GeneralSteps {
     }
 
     @Step("Check Search Results")
-    public GeneralSteps checkSearchResults(){
-        generalPage.checkSearchResults();
+    public GeneralSteps checkSearchResults(String title){
+        generalPage.checkSearchResults(title);
         return this;
     }
 }
