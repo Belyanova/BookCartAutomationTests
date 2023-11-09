@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import static pages.BasePage.generateRandomEnglishString;
 import static pages.BasePage.generateRandomPassword;
+
 @Feature("Registration Tests")
 public class RegistrationTests extends BaseTests {
     @Parameters("correctUsername")
@@ -39,7 +40,7 @@ public class RegistrationTests extends BaseTests {
                 .verifyRegistrationPage()
                 .verifyRequiredFieldsAfterClickErrors()
                 .fillAllFields(randomFirstName,randomLastName,randomUserName,randomPassword,randomConfirmPassword)
-                .selectRadioButtonMale()
+                .selectRadioButtonFemale()
                 .clickOnRegistrationButton()
                 .verifyThatPasswordsErrorsDisplayed();
     }

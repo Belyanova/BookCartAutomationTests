@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.apache.commons.io.FileUtils;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import steps.BookSteps;
 import steps.GeneralSteps;
 import utils.DriverFactory;
 import utils.PropertyReader;
@@ -20,6 +21,8 @@ import java.util.concurrent.TimeUnit;
 public abstract class BaseTests {
     private static WebDriver driver;
     GeneralSteps generalSteps;
+    BookSteps bookSteps;
+
     public static WebDriver getDriver(){
         return driver;
     }
@@ -30,6 +33,7 @@ public abstract class BaseTests {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(PropertyReader.getURL());
         generalSteps = new GeneralSteps();
+        bookSteps = new BookSteps();
     }
 
     @AfterMethod

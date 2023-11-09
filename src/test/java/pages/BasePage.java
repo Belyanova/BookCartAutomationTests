@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import tests.BaseTests;
-
 import java.security.SecureRandom;
 import java.time.Duration;
 
@@ -17,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
-
     protected Actions actions;
 
     public BasePage(){
@@ -31,16 +29,15 @@ public class BasePage {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         return RandomStringUtils.random(length, characters);
     }
+
     public static String generateRandomPassword(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_+=<>?";
         SecureRandom random = new SecureRandom();
         StringBuilder password = new StringBuilder();
-
         for (int i = 0; i < length; i++) {
             int randomIndex = random.nextInt(characters.length());
             password.append(characters.charAt(randomIndex));
         }
-
         return password.toString();
     }
 
