@@ -1,7 +1,9 @@
 package steps;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebElement;
 import pages.GeneralPage;
+import java.util.List;
 
 public class GeneralSteps {
     private final GeneralPage generalPage = new GeneralPage();
@@ -30,5 +32,25 @@ public class GeneralSteps {
     public void logoutOfAccount(){
         generalPage.clickOnLogoutButton();
         generalPage.assertThatLoginButtonExpected();
+    }
+
+    @Step("Сlick On Random Book Element")
+    public BookSteps clickOnRandomBookElement() {
+        WebElement element = selectRandomBookElement();
+        generalPage.clickOnBookElement(element);
+        return new BookSteps();
+    }
+
+    @Step("Select Random Book Element")
+    public WebElement selectRandomBookElement(){
+        List<WebElement> elements = generalPage.findAllBooksElements();
+        WebElement element = generalPage.getRandomElement(elements);
+        return element;
+    }
+
+    @Step("Check Search Results")
+    public GeneralSteps checkSearchResults(){
+        generalPage.checkSearchResults();
+        return this;
     }
 }

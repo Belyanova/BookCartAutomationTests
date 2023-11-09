@@ -54,7 +54,6 @@ public class RegistrationSteps {
         registrationPage.verifyMessageError("passwordError",
                 "Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter and 1 number");
         registrationPage.verifyMessageError("confirmPasswordError", "Password do not match");
-
         return this;
     }
 
@@ -84,7 +83,6 @@ public class RegistrationSteps {
         registrationPage.verifyThatErrorIsNotDisplayed("firstNameError");
         registrationPage.verifyThatErrorIsNotDisplayed("lastNameError");
         registrationPage.verifyThatErrorIsNotDisplayed("PasswordErrors");
-        //registrationPage.clickOnAllRequiredElements();
         registrationPage.clickOnRegisterButton();
         return this;
     }
