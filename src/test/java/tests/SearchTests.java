@@ -13,7 +13,7 @@ public class SearchTests extends BaseTests {
 
         bookSteps.searchByTitle(titleBook)
                 .clickOnDropDownListValue()
-                .checkSearchResults();
+                .checkSearchResults(titleBook);
     }
 
     @Test(description = "Search By Author Book Results Exist Search Test")
