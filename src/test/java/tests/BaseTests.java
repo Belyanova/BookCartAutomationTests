@@ -22,6 +22,7 @@ public abstract class BaseTests {
     private static WebDriver driver;
     GeneralSteps generalSteps;
     BookSteps bookSteps;
+
     public static WebDriver getDriver(){
         return driver;
     }
