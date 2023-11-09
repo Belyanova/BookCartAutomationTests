@@ -21,6 +21,23 @@ public class BookPage extends BasePage{
     @FindBy(xpath = "//div/mat-option/span")
     private WebElement dropDownListValue;
 
+    @FindBy(xpath = "//div/app-addtocart/button")
+    private WebElement addToCartButton;
+
+    @FindBy(xpath = "//div/div/h2")
+    private List<WebElement> bookPageTitles;
+
+    @FindBy(xpath = "//div/simple-snack-bar")
+    private WebElement informMessage;
+
+    public void verifyBookPageTitles(){
+        wait.until(ExpectedConditions.visibilityOfAllElements(bookPageTitles));
+        String bookDetailsTitle1 = bookPageTitles.get(0).getText();
+        assertThatMessageExpected(bookDetailsTitle1,"Book Details",bookPageTitles.get(0));
+        String bookDetailsTitle2 = bookPageTitles.get(1).getText();
+        assertThatMessageExpected(bookDetailsTitle2,"Similar Books",bookPageTitles.get(1));
+    }
+
     public String findElementTitle() {
         return bookDetailsTitle.get(0).getText();
     }
@@ -35,8 +52,7 @@ public class BookPage extends BasePage{
     }
 
     public void clickOnSearchField(){
-        wait.until(ExpectedConditions.visibilityOf(searchField));
-        searchField.click();
+        clickOnButton(searchField);
     }
 
     public void fillSearchField(String text){
@@ -44,7 +60,17 @@ public class BookPage extends BasePage{
     }
 
     public void clickOnDropDownListValue(){
-        wait.until(ExpectedConditions.visibilityOf(dropDownListValue));
-        dropDownListValue.click();
+        clickOnButton(dropDownListValue);
+    }
+
+    public void clickOnAddToCartButton(){
+        clickOnButton(addToCartButton);
+        verifyInformMessage();
+    }
+
+    public void verifyInformMessage(){
+        wait.until(ExpectedConditions.visibilityOf(informMessage));
+        String informMessageText = informMessage.getText();
+        assertThatMessageExpected(informMessageText, "One Item added to cart", informMessage);
     }
 }

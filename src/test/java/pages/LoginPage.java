@@ -49,8 +49,7 @@ public class LoginPage extends BasePage{
     }
 
     public void clickOnLoginButton(){
-        wait.until(ExpectedConditions.visibilityOf(loginButton));
-        loginButton.click();
+        clickOnButton(loginButton);
     }
 
     public void verifyLoginButton(){
@@ -87,8 +86,7 @@ public class LoginPage extends BasePage{
     }
 
     public void clickOnRegisterButton(){
-        wait.until(ExpectedConditions.visibilityOf(registerButton));
-        registerButton.click();
+        clickOnButton(registerButton);
     }
 
     public void verifyRegisterButton(){
