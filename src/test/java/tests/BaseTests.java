@@ -9,6 +9,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import steps.BookSteps;
 import steps.GeneralSteps;
+import steps.ShoppingCartSteps;
 import utils.DriverFactory;
 import utils.PropertyReader;
 import java.io.File;
@@ -22,7 +23,7 @@ public abstract class BaseTests {
     private static WebDriver driver;
     GeneralSteps generalSteps;
     BookSteps bookSteps;
-
+    ShoppingCartSteps shoppingCartSteps;
     public static WebDriver getDriver(){
         return driver;
     }
@@ -34,6 +35,7 @@ public abstract class BaseTests {
         driver.get(PropertyReader.getURL());
         generalSteps = new GeneralSteps();
         bookSteps = new BookSteps();
+        shoppingCartSteps = new ShoppingCartSteps();
     }
 
     @AfterMethod

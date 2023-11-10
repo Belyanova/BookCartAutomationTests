@@ -52,4 +52,10 @@ public class BasePage {
                 .as("Wrong '" + message + "' has been displayed!")
                 .contains(expectedMessage);
     }
+
+    public void clickOnButton(WebElement webElement){
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+    }
 }

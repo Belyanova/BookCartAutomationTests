@@ -30,6 +30,9 @@ public class GeneralPage extends BasePage{
     @FindBy(xpath = "//input[@type='search']")
     private WebElement searchField;
 
+    @FindBy(xpath = "//div/button/span/mat-icon[contains(.,'shopping_cart')]")
+    private WebElement shoppingCartButton;
+
     public void assertThatBookCartButtonExpected(){
         wait.until(ExpectedConditions.visibilityOf(bookCartButton));
         assertThat(bookCartButton.getText())
@@ -45,8 +48,7 @@ public class GeneralPage extends BasePage{
     }
 
     public void clickOnLoginButton(){
-        wait.until(ExpectedConditions.visibilityOf(loginButton));
-        loginButton.click();
+        clickOnButton(loginButton);
     }
 
     public void verifyThatUsernameExpected(String username){
@@ -88,9 +90,7 @@ public class GeneralPage extends BasePage{
     }
 
     public void clickOnBookElement(WebElement webElement){
-        wait.until(ExpectedConditions.visibilityOf(webElement));
-        wait.until(ExpectedConditions.elementToBeClickable(webElement));
-        webElement.click();
+        clickOnButton(webElement);
     }
 
     public WebElement getRandomElement(List<WebElement> webElements) {
@@ -109,5 +109,13 @@ public class GeneralPage extends BasePage{
         } else {
             return true;
         }
+    }
+
+    public void clickOnShoppingCartButton(){
+        clickOnButton(shoppingCartButton);
+    }
+
+    public void clickOnBookCartButton(){
+        clickOnButton(bookCartButton);
     }
 }

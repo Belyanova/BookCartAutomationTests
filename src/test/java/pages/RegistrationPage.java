@@ -162,8 +162,7 @@ public class RegistrationPage extends BasePage {
     }
 
     public void selectRadioButtonMale(){
-        wait.until(ExpectedConditions.visibilityOf(radioButtonMale));
-        radioButtonMale.click();
+        clickOnButton(radioButtonMale);
     }
 
     public void verifyRadioButtonMale(){
@@ -172,8 +171,7 @@ public class RegistrationPage extends BasePage {
     }
 
     public void selectRadioButtonFemale(){
-        wait.until(ExpectedConditions.visibilityOf(radioButtonFemale));
-        radioButtonFemale.click();
+        clickOnButton(radioButtonFemale);
     }
 
     public void verifyRadioButtonFemale(){

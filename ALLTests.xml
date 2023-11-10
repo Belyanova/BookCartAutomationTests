@@ -6,9 +6,10 @@
             <listener class-name="io.qameta.allure.testng.AllureTestNg" />
         </listeners>
         <classes>
-            <!--class name="tests.LoginTests" />
-            <class name="tests.RegistrationTests" /-->
+            <class name="tests.LoginTests" />
+            <class name="tests.RegistrationTests" />
             <class name="tests.SearchTests" />
+            <class name="tests.ShoppingCartTests" />
         </classes>
     </test>
 </suite>

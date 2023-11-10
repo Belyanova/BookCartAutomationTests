@@ -6,6 +6,12 @@ import pages.BookPage;
 public class BookSteps {
     private final BookPage bookPage = new BookPage();
 
+    @Step("Verify That Book Page Displayed")
+    public BookSteps verifyThatBookPageDisplayed(){
+        bookPage.verifyBookPageTitles();
+        return this;
+    }
+
     @Step("Search By Title")
     public BookSteps searchByTitle(String title){
         bookPage.clickOnSearchField();
@@ -39,5 +45,11 @@ public class BookSteps {
     public GeneralSteps clickOnDropDownListValue (){
         bookPage.clickOnDropDownListValue();
         return new GeneralSteps();
+    }
+
+    @Step("Click On Shopping Cart Button")
+    public BookSteps clickOnAddToCartButton(){
+        bookPage.clickOnAddToCartButton();
+        return this;
     }
 }

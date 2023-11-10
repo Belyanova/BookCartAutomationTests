@@ -9,6 +9,7 @@ public class SearchTests extends BaseTests {
     public void searchByTitleBookResultsExistSearchTest() {
         String titleBook = generalSteps.verifyGeneralPageNoLoginAccount()
                 .clickOnRandomBookElement()
+                .verifyThatBookPageDisplayed()
                 .findElementTitle();
 
         bookSteps.searchByTitle(titleBook)
@@ -20,11 +21,13 @@ public class SearchTests extends BaseTests {
     public void searchByAuthorBookResultsExistSearchTest() {
         String authorBook = generalSteps.verifyGeneralPageNoLoginAccount()
                 .clickOnRandomBookElement()
+                .verifyThatBookPageDisplayed()
                 .findElementAuthor();
 
         bookSteps.searchByAuthor(authorBook)
                 .clickOnDropDownListValue()
                 .clickOnRandomBookElement()
+                .verifyThatBookPageDisplayed()
                 .verifyAuthor(authorBook);
     }
 }

@@ -53,4 +53,15 @@ public class GeneralSteps {
         generalPage.checkSearchResults(title);
         return this;
     }
+
+    @Step("Click On Shopping Cart Button")
+    public ShoppingCartSteps clickOnShoppingCartButton(){
+        generalPage.clickOnShoppingCartButton();
+        return new ShoppingCartSteps();
+    }
+
+    public GeneralSteps clickOnBookCartButton(){
+        generalPage.clickOnBookCartButton();
+        return this;
+    }
 }
