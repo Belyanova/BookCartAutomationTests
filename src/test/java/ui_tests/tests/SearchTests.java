@@ -1,11 +1,11 @@
-package tests;
+package ui_tests.tests;
 
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 
 @Feature("Search Tests")
 public class SearchTests extends BaseTests {
-    @Test(description = "Search By Title Book Results Exist Search Test")
+    @Test(description = "Search By Title Book Results Exist Search Test", alwaysRun = true)
     public void searchByTitleBookResultsExistSearchTest() {
         String titleBook = generalSteps.verifyGeneralPageNoLoginAccount()
                 .clickOnRandomBookElement()
@@ -17,7 +17,7 @@ public class SearchTests extends BaseTests {
                 .checkSearchResults(titleBook);
     }
 
-    @Test(description = "Search By Author Book Results Exist Search Test")
+    @Test(description = "Search By Author Book Results Exist Search Test", alwaysRun = true)
     public void searchByAuthorBookResultsExistSearchTest() {
         String authorBook = generalSteps.verifyGeneralPageNoLoginAccount()
                 .clickOnRandomBookElement()

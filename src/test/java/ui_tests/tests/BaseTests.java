@@ -1,4 +1,4 @@
-package tests;
+package ui_tests.tests;
 
 import io.qameta.allure.Allure;
 import org.openqa.selenium.OutputType;
@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 import org.apache.commons.io.FileUtils;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import steps.BookSteps;
-import steps.GeneralSteps;
-import steps.ShoppingCartSteps;
+import ui_tests.steps.BookSteps;
+import ui_tests.steps.GeneralSteps;
+import ui_tests.steps.ShoppingCartSteps;
 import utils.DriverFactory;
 import utils.PropertyReader;
 import java.io.File;

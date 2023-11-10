@@ -1,16 +1,16 @@
-package tests;
+package ui_tests.tests;
 
 import io.qameta.allure.Feature;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import static pages.BasePage.generateRandomEnglishString;
-import static pages.BasePage.generateRandomPassword;
+import static ui_tests.pages.BasePage.generateRandomEnglishString;
+import static ui_tests.pages.BasePage.generateRandomPassword;
 
 @Feature("Registration Tests")
 public class RegistrationTests extends BaseTests {
     @Parameters("correctUsername")
-    @Test(description = "Username Is Not Available And Incorrect Password Registration Test")
+    @Test(description = "Username Is Not Available And Incorrect Password Registration Test", alwaysRun = true)
     public void usernameIsNotAvailableAndIncorrectPasswordRegistrationTest(String correctUsername){
         String randomFirstName = generateRandomEnglishString(5);
         String randomLastName = generateRandomEnglishString(5);
@@ -26,7 +26,7 @@ public class RegistrationTests extends BaseTests {
                 .verifyThatUsernameAndPasswordErrorsDisplayed();
     }
 
-    @Test(description = "Username Is Unique Password Do Not Match Registration Test")
+    @Test(description = "Username Is Unique Password Do Not Match Registration Test", alwaysRun = true)
     public void usernameIsUniquePasswordDoNotMatchRegistrationTest(){
         String randomFirstName = generateRandomEnglishString(5);
         String randomLastName = generateRandomEnglishString(5);
@@ -46,7 +46,7 @@ public class RegistrationTests extends BaseTests {
     }
 
     @Parameters("correctPassword")
-    @Test(description = "Correct Username And Correct Password Registration Test")
+    @Test(description = "Correct Username And Correct Password Registration Test", alwaysRun = true)
     public void correctUsernameAndCorrectPasswordRegistrationTest(String correctPassword){
         String randomFirstName = generateRandomEnglishString(5);
         String randomLastName = generateRandomEnglishString(5);

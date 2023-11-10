@@ -1,7 +1,7 @@
-package steps;
+package ui_tests.steps;
 
 import io.qameta.allure.Step;
-import pages.LoginPage;
+import ui_tests.pages.LoginPage;
 
 public class LoginSteps {
     private final LoginPage loginPage = new LoginPage();

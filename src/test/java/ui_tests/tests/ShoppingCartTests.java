@@ -1,4 +1,4 @@
-package tests;
+package ui_tests.tests;
 
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;

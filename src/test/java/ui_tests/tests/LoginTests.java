@@ -1,14 +1,14 @@
-package tests;
+package ui_tests.tests;
 
-import io.qameta.allure.Feature;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import static pages.BasePage.generateRandomEnglishString;
-@Feature("Login Tests")
+import static ui_tests.pages.BasePage.generateRandomEnglishString;
+
 public class LoginTests extends BaseTests {
+
     @Parameters({"correctUsername", "correctPassword"})
-    @Test(description = "Correct Username And Correct Password Test")
+    @Test(description = "Correct Username And Correct Password Test", alwaysRun = true)
     public void correctUsernameAndCorrectPasswordLoginTest(String correctUsername, String correctPassword) {
         generalSteps.verifyGeneralPageNoLoginAccount()
                 .goToLoginPage()
@@ -21,7 +21,7 @@ public class LoginTests extends BaseTests {
     }
 
     @Parameters("correctUsername")
-    @Test(description = "Correct Username And Incorrect Password Test")
+    @Test(description = "Correct Username And Incorrect Password Test", alwaysRun = true)
     public void correctUsernameAndIncorrectPasswordLoginTest(String correctUsername) {
         String randomPassword = generateRandomEnglishString(10);
         generalSteps.verifyGeneralPageNoLoginAccount()
@@ -32,7 +32,7 @@ public class LoginTests extends BaseTests {
                 .verifyErrorOnLoginPage();
     }
 
-    @Test(description = "Incorrect Username And Incorrect Password Test")
+    @Test(description = "Incorrect Username And Incorrect Password Test", alwaysRun = true)
     public void incorrectUsernameAndIncorrectPasswordLoginTest(){
         String randomPassword = generateRandomEnglishString(10);
         String randomUsername = generateRandomEnglishString(10);

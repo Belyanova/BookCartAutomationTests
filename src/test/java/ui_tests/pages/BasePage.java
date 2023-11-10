@@ -1,4 +1,4 @@
-package pages;
+package ui_tests.pages;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import tests.BaseTests;
+import ui_tests.tests.BaseTests;
 import java.security.SecureRandom;
 import java.time.Duration;
 
