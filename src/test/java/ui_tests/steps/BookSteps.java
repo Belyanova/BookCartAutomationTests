@@ -1,7 +1,7 @@
-package steps;
+package ui_tests.steps;
 
 import io.qameta.allure.Step;
-import pages.BookPage;
+import ui_tests.pages.BookPage;
 
 public class BookSteps {
     private final BookPage bookPage = new BookPage();

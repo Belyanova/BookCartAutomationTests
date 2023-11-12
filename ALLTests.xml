@@ -1,15 +1,24 @@
 <suite name="ALLTestSuite">
-    <test name="LoginTests">
+    <test name="UI Tests">
         <parameter name="correctUsername" value="testname-iri" />
         <parameter name="correctPassword" value="123Test123!" />
         <listeners>
             <listener class-name="io.qameta.allure.testng.AllureTestNg" />
         </listeners>
         <classes>
-            <class name="tests.LoginTests" />
-            <class name="tests.RegistrationTests" />
-            <class name="tests.SearchTests" />
-            <class name="tests.ShoppingCartTests" />
+            <class name="ui_tests.tests.LoginTests" />
+            <class name="ui_tests.tests.RegistrationTests" />
+            <class name="ui_tests.tests.SearchTests" />
+            <class name="ui_tests.tests.ShoppingCartTests" />
+        </classes>
+    </test>
+    <test name="API Tests">
+        <listeners>
+            <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+        </listeners>
+        <classes>
+            <class name="api_tests.Login.LoginApiTests" />
+            <class name="api_tests.Book.BookApiTests" />
         </classes>
     </test>
 </suite>

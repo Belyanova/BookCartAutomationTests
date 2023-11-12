@@ -1,8 +1,8 @@
-package steps;
+package ui_tests.steps;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
-import pages.GeneralPage;
+import ui_tests.pages.GeneralPage;
 import java.util.List;
 
 public class GeneralSteps {

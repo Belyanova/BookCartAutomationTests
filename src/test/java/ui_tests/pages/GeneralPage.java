@@ -1,4 +1,4 @@
-package pages;
+package ui_tests.pages;
 
 import java.util.Random;
 import org.openqa.selenium.WebElement;

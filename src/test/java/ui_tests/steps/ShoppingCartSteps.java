@@ -1,7 +1,7 @@
-package steps;
+package ui_tests.steps;
 
 import io.qameta.allure.Step;
-import pages.ShoppingCartPage;
+import ui_tests.pages.ShoppingCartPage;
 
 public class ShoppingCartSteps {
     private final ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
