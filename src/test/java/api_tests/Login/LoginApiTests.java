@@ -15,7 +15,7 @@ public class LoginApiTests {
     private final static String url = PropertyReader.getURL();
 
     @Test(description = "Login Successful API Test", alwaysRun = true)
-    public void loginSuccessfulApiTest(){
+    public void loginSuccessfulPostApiTest(){
         Specifications.installSpecification(Specifications.requestSpecification(url),
                 Specifications.responseSpecificationOK200());
         Integer expectedUserId = 15;
@@ -35,7 +35,7 @@ public class LoginApiTests {
     }
 
     @Test(description = "Login UnSuccessful API Test", alwaysRun = true)
-    public void loginUnSuccessfulApiTest(){
+    public void loginUnSuccessfulPostApiTest(){
         Specifications.installSpecification(Specifications.requestSpecification(url),
                 Specifications.responseSpecificationERROR401());
         LoginData user = new LoginData(1912, "String","String","TestUser",

@@ -13,7 +13,7 @@ public class BookApiTests {
     private final static String url = PropertyReader.getURL();
 
     @Test(description = "Check Title And Cover File Name For Books Api Test", alwaysRun = true)
-    public void checkTitleAndCoverFileNameForBooksApiTest(){
+    public void checkTitleAndCoverFileNameForBooksGetApiTest(){
         Specifications.installSpecification(Specifications.requestSpecification(url),
                 Specifications.responseSpecificationOK200());
         List<BookData> books = given()
