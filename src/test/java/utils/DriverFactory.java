@@ -2,8 +2,6 @@ package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.File;
@@ -24,14 +22,6 @@ public class DriverFactory {
                 file = new File(DRIVER_PATH + "geckodriver");
                 System.setProperty("webdriver.firefox.driver", file.getAbsolutePath());
                 driver = new FirefoxDriver();
-                break;
-            case CHROMIUM:
-                file = new File(DRIVER_PATH + "chromedriver");
-                System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setBinary("/usr/bin/chromium");
-                chromeOptions.addArguments("--no-sandbox");
-                driver = new ChromeDriver(chromeOptions);
                 break;
         }
         driver.manage().window().maximize();
