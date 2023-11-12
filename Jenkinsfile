@@ -1,11 +1,25 @@
 pipeline {
     agent {
-        docker { image 'maven:3.8.3-openjdk-17' }
+        docker { image 'debian:xvfb' }
     }
     stages {
-        stage('Test') {
+        stage('checkout') {
             steps {
+                checkout scm
+            }
+        }
+         stage('RunTest') {
+            steps {
+                wrap([$class: 'Xvfb', additionalOptions: '', assignedLabels: '', autoDisplayName: true, debug: true, displayNameOffset: 0, installationName: 'Xvfb', parallelBuild: true, screen: '1024x758x24', timeout: 25]) {
+                sh 'mvn clean test'
+                }
+            }
+        }
+         stage('Test') {
+            steps {
+                wrap([$class: 'Xvfb', additionalOptions: '', assignedLabels: '', autoDisplayName: true, debug: true, displayNameOffset: 0, installationName: 'Xvfb', parallelBuild: true, screen: '1024x758x24', timeout: 25]) {
                 sh 'mvn -version'
+                }
             }
         }
     }
