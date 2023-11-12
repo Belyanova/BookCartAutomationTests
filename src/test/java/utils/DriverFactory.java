@@ -30,6 +30,7 @@ public class DriverFactory {
                 System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.setBinary("/usr/bin/chromium");
+                chromeOptions.addArguments("--no-sandbox");
                 driver = new ChromeDriver(chromeOptions);
                 break;
         }
